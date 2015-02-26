@@ -1,0 +1,4 @@
+.git
+virt_*
+*.log
+*.pid
