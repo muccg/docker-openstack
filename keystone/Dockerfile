@@ -1,4 +1,4 @@
-FROM muccg/osbase
+FROM muccg/openstackbase
 MAINTAINER ccg <ccgdevops@googlegroups.com>
 
 RUN apt-get -qqy update
