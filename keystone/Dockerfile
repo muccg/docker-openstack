@@ -1,4 +1,4 @@
-FROM muccg/openstackbase
+FROM muccg/openstackbase:juno
 MAINTAINER ccg <ccgdevops@googlegroups.com>
 
 RUN apt-get -qqy update && apt-get install -y --no-install-recommends \

@@ -13,7 +13,10 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
   language-pack-en \
+  ubuntu-cloud-keyring \
   && locale-gen en_US \
+  && echo "deb http://ubuntu-cloud.archive.canonical.com/ubuntu" \
+  "trusty-updates/juno main" > /etc/apt/sources.list.d/cloudarchive-juno.list \
   && apt-get update && apt-get install -y --no-install-recommends \
   apt-transport-https \
   build-essential \
