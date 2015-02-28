@@ -15,4 +15,4 @@ VOLUME /etc/keystone
 
 EXPOSE 35357 5000
 
-CMD ["/usr/bin/supervisord", "-n"]
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf", "-n"]
