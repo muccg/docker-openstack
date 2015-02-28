@@ -1,5 +1,5 @@
-osbase:
-    build: osbase/
+base:
+    build: base/
 
 keystone:
     build: keystone/
