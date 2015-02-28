@@ -18,9 +18,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   apt-transport-https \
   build-essential \
   ca-certificates \
+  supervisor \
   && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN env --unset=DEBIAN_FRONTEND
+ENV BUILD_HOST_FILE /build_host.txt
+ENV APT_PROXY_CONF /etc/apt/apt.conf.d/30proxy
 
 CMD ['/bin/sh']
 
