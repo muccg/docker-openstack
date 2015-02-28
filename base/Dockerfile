@@ -23,3 +23,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN env --unset=DEBIAN_FRONTEND
 
 CMD ['/bin/sh']
+
+# Determine build host
+ONBUILD RUN netstat -nr | grep '^0\.0\.0\.0' | awk '{print $2}' > ${BUILD_HOST_FILE}
+
+# squid proxy if available
+ONBUILD RUN echo "HEAD /" | nc -q -1 -n -v  `cat ${BUILD_HOST_FILE}` 3128 | grep squid-deb-proxy \
+  && (echo "Acquire::http::Proxy \"http://$(cat ${BUILD_HOST_FILE}):3128\";" > ${APT_PROXY_CONF}) \
+  && (echo "Acquire::http::Proxy::ppa.launchpad.net DIRECT;" >> ${APT_PROXY_CONF}) \
+  || echo "No squid-deb-proxy detected on docker host"
