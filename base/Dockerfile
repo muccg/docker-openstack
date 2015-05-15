@@ -16,7 +16,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   && locale-gen en_US \
   && apt-get update && apt-get install -y --no-install-recommends \
   apt-transport-https \
-  build-essential \
   ca-certificates \
   supervisor \
   && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
