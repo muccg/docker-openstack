@@ -1,5 +1,5 @@
 FROM muccg/openstackbase:icehouse
-MAINTAINER ccg <ccgdevops@googlegroups.com>
+MAINTAINER https://github.com/muccg/
 
 RUN apt-get -qqy update && apt-get install -y --no-install-recommends \
   mysql-client \
@@ -10,8 +10,6 @@ RUN apt-get -qqy update && apt-get install -y --no-install-recommends \
 
 # Run keystone with supervisord
 COPY supervisord/supervisord-keystone.conf /etc/supervisor/conf.d/supervisord-keystone.conf
-
-VOLUME /etc/keystone
 
 EXPOSE 35357 5000
 
