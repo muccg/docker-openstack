@@ -1,5 +1,5 @@
 FROM ubuntu:14.04
-MAINTAINER ccg <ccgdevops@googlegroups.com>
+MAINTAINER https://github.com/muccg/
 
 ENV BASE_VERSION 2015-02-27
 ENV OPENSTACK_VERSION icehouse
