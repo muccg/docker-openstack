@@ -8,4 +8,6 @@ RUN apt-get -qqy update && apt-get install -y --no-install-recommends \
 # Run with supervisord
 COPY supervisord/openstack.conf /etc/supervisor/conf.d/openstack.conf
 
+EXPOSE 6080
+
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf", "-n"]
