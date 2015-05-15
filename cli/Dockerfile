@@ -1,5 +1,5 @@
 FROM muccg/openstackbase:juno
-MAINTAINER ccg <ccgdevops@googlegroups.com>
+MAINTAINER https://github.com/muccg/
 
 RUN apt-get -qqy update && apt-get install -y --no-install-recommends \
   python-ceilometerclient \
