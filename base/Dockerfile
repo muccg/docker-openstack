@@ -1,7 +1,7 @@
 FROM ubuntu:14.04
-MAINTAINER ccg <ccgdevops@googlegroups.com>
+MAINTAINER https://github.com/muccg/
 
-ENV BASE_VERSION 2015-03-01
+ENV BASE_VERSION 2015-05-16
 ENV OPENSTACK_VERSION juno
 
 ENV HOME /root
