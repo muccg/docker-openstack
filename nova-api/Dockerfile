@@ -2,7 +2,9 @@ FROM muccg/openstackbase:icehouse
 MAINTAINER https://github.com/muccg/
 
 RUN apt-get -qqy update && apt-get install -y --no-install-recommends \
+  mysql-client \
   nova-api \
+  python-mysqldb \
   && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Run with supervisord
