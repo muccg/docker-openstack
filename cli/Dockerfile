@@ -1,12 +1,14 @@
 FROM muccg/openstackbase:icehouse
-MAINTAINER ccg <ccgdevops@googlegroups.com>
+MAINTAINER https://github.com/muccg/
 
 RUN apt-get -qqy update && apt-get install -y --no-install-recommends \
+  mysql-client \
   python-ceilometerclient \
   python-cinderclient \
   python-glanceclient \
   python-heatclient \
   python-keystoneclient \
+  python-mysqldb \
   python-neutronclient \
   python-novaclient \
   python-swiftclient \
