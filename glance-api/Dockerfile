@@ -5,6 +5,7 @@ RUN apt-get -qqy update && apt-get install -y --no-install-recommends \
   glance-api \
   mysql-client \
   python-mysqldb \
+  python-rbd \
   && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Run with supervisord
