@@ -1,7 +1,7 @@
 FROM ubuntu:14.04
 MAINTAINER https://github.com/muccg/
 
-ENV BASE_VERSION 2015-05-16
+ENV BASE_VERSION 2015-06-12
 ENV OPENSTACK_VERSION juno
 
 ENV HOME /root
@@ -19,7 +19,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   "trusty-updates/juno main" > /etc/apt/sources.list.d/cloudarchive-juno.list \
   && apt-get update && apt-get install -y --no-install-recommends \
   apt-transport-https \
-  build-essential \
   ca-certificates \
   supervisor \
   && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*

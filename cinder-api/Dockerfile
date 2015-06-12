@@ -2,17 +2,14 @@ FROM muccg/openstackbase:juno
 MAINTAINER https://github.com/muccg/
 
 RUN apt-get -qqy update && apt-get install -y --no-install-recommends \
+  cinder-api \
   mysql-client \
-  python-ceilometerclient \
-  python-cinderclient \
-  python-glanceclient \
-  python-heatclient \
-  python-keystoneclient \
   python-mysqldb \
-  python-neutronclient \
-  python-novaclient \
-  python-swiftclient \
-  python-troveclient \
   && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-CMD ["/bin/sh"]
+# Run with supervisord
+COPY supervisord/openstack.conf /etc/supervisor/conf.d/openstack.conf
+
+EXPOSE 8776
+
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf", "-n"]
