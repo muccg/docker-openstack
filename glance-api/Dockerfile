@@ -4,6 +4,7 @@ MAINTAINER https://github.com/muccg/
 RUN apt-get -qqy update && apt-get install -y --no-install-recommends \
   glance-api \
   mysql-client \
+  python-memcache \
   python-mysqldb \
   python-ceph \
   && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
