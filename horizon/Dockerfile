@@ -1,4 +1,4 @@
-FROM muccg/openstackbase:juno
+FROM muccg/openstackbase:kilo
 MAINTAINER https://github.com/muccg/
 
 RUN apt-get -qqy update && apt-get install -y --no-install-recommends \

@@ -2,7 +2,7 @@ FROM ubuntu:14.04
 MAINTAINER https://github.com/muccg/
 
 ENV BASE_VERSION 2015-06-12
-ENV OPENSTACK_VERSION juno
+ENV OPENSTACK_VERSION kilo
 
 ENV HOME /root
 ENV LANG en_US.UTF-8
@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   ubuntu-cloud-keyring \
   && locale-gen en_US \
   && echo "deb http://ubuntu-cloud.archive.canonical.com/ubuntu" \
-  "trusty-updates/juno main" > /etc/apt/sources.list.d/cloudarchive-juno.list \
+  "trusty-updates/kilo main" > /etc/apt/sources.list.d/cloudarchive-kilo.list \
   && apt-get update && apt-get install -y --no-install-recommends \
   apt-transport-https \
   ca-certificates \
