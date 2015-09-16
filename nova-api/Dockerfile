@@ -14,3 +14,5 @@ COPY supervisord/openstack.conf /etc/supervisor/conf.d/openstack.conf
 EXPOSE 8773 8774 8775 3333
 
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf", "-n"]
+
+# rebuild please oh my

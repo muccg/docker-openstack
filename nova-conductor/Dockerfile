@@ -12,3 +12,5 @@ RUN apt-get -qqy update && apt-get install -y --no-install-recommends \
 COPY supervisord/openstack.conf /etc/supervisor/conf.d/openstack.conf
 
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf", "-n"]
+
+# rebuild please oh my
