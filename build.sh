@@ -16,6 +16,16 @@ docker build -t muccg/openstackbase:${BRANCH} openstackbase
 for dir in */
 do
     dir=${dir%*/}
-    echo ${dir##*/}
+    echo "################################################################### ${dir##*/}"
     docker build -t muccg/${dir}:${BRANCH}.${DATE} ${dir}
+    docker build -t muccg/${dir}:${BRANCH} ${dir}
+done
+
+# publish sub dirs
+for dir in */
+do
+    dir=${dir%*/}
+    echo "################################################################### ${dir##*/}"
+    docker push muccg/${dir}:${BRANCH}.${DATE}
+    docker push muccg/${dir}:${BRANCH}
 done
