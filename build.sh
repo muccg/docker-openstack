@@ -21,6 +21,9 @@ do
     docker build -t muccg/${dir}:${BRANCH} ${dir}
 done
 
+# Don't really want this here. Plus it prompts for username, no switch to tell it to blow up
+docker login -u ccgbuildbot
+
 # publish sub dirs
 for dir in */
 do
