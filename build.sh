@@ -24,11 +24,14 @@ done
 # Don't really want this here. Plus it prompts for username, no switch to tell it to blow up
 docker login -u ccgbuildbot
 
+# Debug for CI environment
+env
+
 # publish sub dirs
 for dir in */
 do
     dir=${dir%*/}
     echo "################################################################### ${dir##*/}"
-    docker push -u ccgbuildbot muccg/${dir}:${BRANCH}.${DATE}
-    docker push -u ccgbuildbot muccg/${dir}:${BRANCH}
+    docker push muccg/${dir}:${BRANCH}.${DATE}
+    docker push muccg/${dir}:${BRANCH}
 done
