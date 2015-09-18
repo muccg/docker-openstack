@@ -29,6 +29,6 @@ for dir in */
 do
     dir=${dir%*/}
     echo "################################################################### ${dir##*/}"
-    docker push muccg/${dir}:${BRANCH}.${DATE}
-    docker push muccg/${dir}:${BRANCH}
+    docker push -u ccgbuildbot muccg/${dir}:${BRANCH}.${DATE}
+    docker push -u ccgbuildbot muccg/${dir}:${BRANCH}
 done
