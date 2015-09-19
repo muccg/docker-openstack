@@ -22,7 +22,9 @@ do
 done
 
 # Don't really want this here. Plus it prompts for username, no switch to tell it to blow up
+docker version
 docker login -u ccgbuildbot
+docker info
 
 # Debug for CI environment
 env
