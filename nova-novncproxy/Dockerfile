@@ -1,4 +1,4 @@
-FROM muccg/openstackbase:kilo
+FROM muccg/openstackbase:liberty
 MAINTAINER https://github.com/muccg/
 
 RUN apt-get -qqy update && apt-get install -y --no-install-recommends \

@@ -1,4 +1,4 @@
-FROM muccg/openstackbase:kilo
+FROM muccg/openstackbase:liberty
 MAINTAINER https://github.com/muccg/
 
 RUN apt-get -qqy update && apt-get install -y --no-install-recommends \
@@ -6,7 +6,7 @@ RUN apt-get -qqy update && apt-get install -y --no-install-recommends \
   keystone \
   python-keystoneclient \
   python-memcache \
-  python-mysqldb \
+  python-pymysql \
   && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Run keystone with supervisord

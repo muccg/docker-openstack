@@ -3,7 +3,7 @@
 # Script to build images
 #
 
-: ${OPENSTACK_VERSION:='kilo'}
+: ${OPENSTACK_VERSION:='liberty'}
 . ./lib.sh
 
 set -e

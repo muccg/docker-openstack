@@ -1,7 +1,7 @@
 FROM ubuntu:14.04
 MAINTAINER https://github.com/muccg/
 
-ENV OPENSTACK_VERSION kilo
+ENV OPENSTACK_VERSION liberty
 
 ENV HOME /root
 ENV LANG en_US.UTF-8
@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   ubuntu-cloud-keyring \
   && locale-gen en_US \
   && echo "deb http://ubuntu-cloud.archive.canonical.com/ubuntu" \
-  "trusty-updates/kilo main" > /etc/apt/sources.list.d/cloudarchive-kilo.list \
+  "trusty-updates/liberty main" > /etc/apt/sources.list.d/cloudarchive-liberty.list \
   && apt-get update && apt-get install -y --no-install-recommends \
   apt-transport-https \
   ca-certificates \
