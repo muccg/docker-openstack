@@ -3,32 +3,49 @@
 # Script to build images
 #
 
-# break on error
+: ${OPENSTACK_VERSION:='kilo'}
+. ./lib.sh
+
 set -e
 
-DATE=`date +%Y.%m.%d`
-BRANCH='kilo'
 
-# ensure we build base first, everything extends from this
-docker pull muccg/openstackbase:${BRANCH} || true
-docker build -t muccg/openstackbase:${BRANCH} openstackbase
+
+build_image() {
+    info "################################################################### ${IMAGE}"
+
+    set -x
+    docker pull muccg/${IMAGE}:${OPENSTACK_VERSION} || true
+    docker build ${DOCKER_BUILD_OPTS} -t muccg/${IMAGE}:${OPENSTACK_VERSION} ${IMAGE}
+    docker build ${DOCKER_BUILD_OPTS} -t muccg/${IMAGE}:${OPENSTACK_VERSION}-${DATE} ${IMAGE}
+    set +x
+
+    # ensure we build base first, everything extends from this
+    success "$(docker images | grep "muccg/${IMAGE}" | grep ${OPENSTACK_VERSION} | sed 's/  */ /g')"
+
+    # push
+    if [ ${DOCKER_USE_HUB} = "1" ]; then
+        _ci_docker_login
+        docker push muccg/${IMAGE}:${OPENSTACK_VERSION}-${DATE}
+        docker push muccg/${IMAGE}:${OPENSTACK_VERSION}
+    fi
+}
+
+docker_options
+info "${DOCKER_BUILD_OPTS}"
+
+# build the base image first
+IMAGE="openstackbase"
+build_image
+
+# stop build trying to get a 'newer' base image
+DOCKER_PULL=0
+docker_options
+info "${DOCKER_BUILD_OPTS}"
 
 # build sub dirs
 for dir in */
 do
     dir=${dir%*/}
-    echo "################################################################### ${dir##*/}"
-
-    # blindly pull what we are trying to build
-    # at the very least this should ensure the build server has the latest image from this branch
-    docker pull muccg/${dir}:${BRANCH} || true
-    docker pull muccg/${dir}:${BRANCH}.${DATE} || true
-
-    # build
-    docker build -t muccg/${dir}:${BRANCH}.${DATE} ${dir}
-    docker build -t muccg/${dir}:${BRANCH} ${dir}
-
-    # push
-    docker push muccg/${dir}:${BRANCH}.${DATE}
-    docker push muccg/${dir}:${BRANCH}
+    IMAGE="${dir}"
+    build_image
 done
